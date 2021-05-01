@@ -31,6 +31,8 @@ class QuestionController extends AbstractController
 //            'Future page to show the question "%s"!',
 //            ucwords(str_replace('-',' ', $slug))
 //        ));
+//        dump($slug, $this);
+        dd($slug, $this);
 
         $answers = [
             'Make sure your cat is sitting purrrfectly still 🤣',
