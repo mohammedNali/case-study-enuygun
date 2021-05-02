@@ -4,23 +4,32 @@
 namespace App\Controller;
 
 
+use App\Entity\Task;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Twig\Environment;
 
 class QuestionController extends AbstractController
 {
     /**
-     * @Route("/")
+     * @Route("/", name="app_homepage")
      */
-    public function homepage()
+    public function homepage(Environment $environment)
     {
-        return new Response('what a bewitching controller we have conjured');
+//        return new Response('what a bewitching controller we have conjured');
+        /*
+        $html = $environment->render('question/homepage.html.twig');
+        return new Response($html);
+        */
 
+        return $this->render('question/homepage.html.twig');
     }
 
     /**
-     * @Route("/questions/{slug}")
+     * @Route("/questions/{slug}", name="app_question_show")
      */
     public function show($slug)
     {
@@ -32,7 +41,7 @@ class QuestionController extends AbstractController
 //            ucwords(str_replace('-',' ', $slug))
 //        ));
 //        dump($slug, $this);
-        dd($slug, $this);
+//        dd($slug, $this);
 
         $answers = [
             'Make sure your cat is sitting purrrfectly still 🤣',
@@ -46,4 +55,7 @@ class QuestionController extends AbstractController
 
 
     }
+
+
+
 }
