@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{#{% block title %}Question: {{ tasks.url }}{% endblock %}#}
+
+{% block body %}
+<div class="container" style="text-align: center;">
+    <div class="row" style="margin: 30px;">
+        <div class="col-6">
+            <table class="table table-striped" style="text-align: center;" >
+                <thead>
+                <tr>
+                    <th scope="col">Task ismi</th>
+                    <th scope="col">Süre</th>
+                    <th scope="col">Zorluk</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for f in tasks %}
+                    <tr>
+                        <td>{{ f.title }}</td>
+                        <td>{{ f.duration }}</td>
+                        <td>{{ f.difficulty }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6" style="width: 100%;">
+            <div id="fixmeId" class="fixme" style="background-color: #D45B3F; margin: 10px; padding: 10px;">
+                <p style="color: white;">{{ totalWeek }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/provider-tasks.js') }}"></script>
+{% endblock %}
+

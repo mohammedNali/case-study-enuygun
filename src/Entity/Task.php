@@ -89,4 +89,23 @@ class Task
 
         return $this;
     }
+
+
+
+//    /**
+//     * @ORM\ManyToOne(targetEntity="App\Entity\Provider", inversedBy="tasks")
+//     */
+//    private $provider;
+//
+//    public function getProvider(): ?Provider
+//    {
+//        return $this->provider;
+//    }
+//
+//    public function setProvider(?Provider $provider): self
+//    {
+//        $this->provider = $provider;
+//
+//        return $this;
+//    }
 }

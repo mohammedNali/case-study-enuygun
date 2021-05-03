@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<div class="jumbotron-img jumbotron jumbotron-fluid" style="padding: 40px;">
+    <div class="container">
+        <div class="input-group mb-3 provider">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Add the provider API here </span>
+            </div>
+            <input id="providerLink" type="text" class="form-control" placeholder="http://www.mocky.io/v2/5d4xxxxxxxxxxxxxxx" aria-label="Username" aria-describedby="basic-addon1">
+            <button id="myBtn" class="btn btn-dark" style="margin: 0 auto; float: right">İŞ LİSTESİ EKLE</button>
+        </div>
+        <div id="showMessage"  style="margin: 20px 200px; display: none; text-align: center;" class="alert alert-info" role="alert">
+        </div>
+    </div>
+
+</div>
+
+
+<div class="container">
+    <div class="row">
+        {% for f in provider %}
+        <div class="col-6">
+            <div style="box-shadow: 2px 3px 9px 4px rgba(0,0,0,0.04);">
+                <div class="q-container p-4">
+                    <div class="row">
+                        <div class="col">
+                            <a class="q-title" style="text-decoration: none;" href="{{ path('app_provider_show', {url: f.url}) }}"><h2>Provider {{ f.url }}</h2></a>
+                            <div class="q-display p-3">
+{#                                <i class="fa fa-quote-left mr-3"></i>#}
+                                <h3 class="d-inline">işlerin minimum toplam kaç haftada biteceğini hatırlamak için
+                                    <a style="text-decoration: none;" href="{{ path('app_provider_show', {url: f.url}) }}"><strong>tıklayınız</strong></a></h3>
+                                <p class="pt-4"><strong>Sevgilerle, Mohammed Ali</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="{{ path('delete_provider', {url: f.url}) }}" style="color: #fff; text-decoration: none;">
+                    <p style="background-color: #D45B3F" class="text-center p-3">
+                        Bunu Silmek için Lütfen Tıklayınız
+                    </p>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/provider-tasks.js') }}"></script>
+{% endblock %}
